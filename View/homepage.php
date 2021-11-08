@@ -1,11 +1,50 @@
-<?php require 'includes/header.php'?>
-<!-- this is the view, try to put only simple if's and loops here.
-Anything complex should be calculated in the model -->
-<section>
-    <h4>Hello <?php echo $user->getName()?>,</h4>
+<?php 
 
-    <p><a href="index.php?page=info">To info page</a></p>
+declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-    <p>Put your content here.</p>
-</section>
+
+require 'includes/header.php'?>
+<form method = "post" action = "">
+    <label for ="customer" >Choose a customer: </label>
+    <select name = "customer" id = "customer">
+        <option value = "">Select customer</option>
+
+ <?php
+foreach($customers as $customer){
+    $id = $customer->getId();
+      $firstName =$customer->getFirstName();
+      $lastName = $customer->getLastName();
+      echo "<option value='{$id}'>{$firstName} {$lastName}</option>";
+}
+
+?>
+
+
+</select>
+
+<label for = "product"> Choose a product: </label>
+<select name = "product" id = "product">
+    <option value = "">Select product </option>
+<?php
+
+foreach ($products as $product) {
+    $id = $product->getId();
+    $name = ucfirst($product->getName());
+    $price = number_format($product->getPrice() / 100, 2);
+    echo "<option value='{$id}'>{$name} = {$price} &euro;</option>";
+}
+
+
+?>
+
+
+</select>
+<br>
+<br>
+<input type="submit" value="Submit">
+</form>
+
 <?php require 'includes/footer.php'?>

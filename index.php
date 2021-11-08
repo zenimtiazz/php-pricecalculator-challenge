@@ -1,5 +1,12 @@
 <?php
+
+
+
 declare(strict_types=1);
+
+require 'Model\Customer.php';
+require 'Model\Customergroup.php';
+require 'Model\Product.php';
 
 //include all your model files here
 require 'Model/User.php';
