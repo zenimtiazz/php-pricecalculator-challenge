@@ -1,6 +1,6 @@
 <?php
 
-#include "Model\database.php";
+include "Model\database.php";
 
 class Customer
 {
@@ -16,7 +16,7 @@ class Customer
     {
         global $connection;
         $query = "SELECT * FROM customer";
-        $output = mysqli_connect($connection, $jquery);
+        $output = mysqli_connect($connection, $query);
 
         if('!$output') {
             die("Query is failed".mysqli_error($connection));
@@ -28,15 +28,16 @@ class Customer
         $this->groupId = $groupId;
         $this->fixedDiscount = $fixedDiscount;
         $this->variableDiscount = $variableDiscount;
-        getId();
+         $this->getId();
     }
 
     public function getId(){
         global $connection;
         $this->firstName;
-        echo $firstName ="SELECT firstname FROM Customer";
+        $firstName ="SELECT * FROM Customer";
         return $output = mysqli_query($connection, $firstName);
-
+        $name =mysqli_fetch_all($output, MYSQLI_ASSOC);
+        return $name;
 
     }
 

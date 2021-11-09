@@ -1,6 +1,6 @@
 <?php
 
-#include "Model\database.php";
+include "Model\database.php";
 
 
 class Product{

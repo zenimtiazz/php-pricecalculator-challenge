@@ -1,6 +1,6 @@
 <?php
 
-#include "Model\database.php";
+include "Model\database.php";
 
 
 class CustomerGroup{
@@ -15,7 +15,7 @@ class CustomerGroup{
         
         global $connection;
         $query = "SELECT * FROM customer";
-        $output = mysqli_connect($connection, $jquery);
+        $output = mysqli_connect($connection, $query);
 
         if('!$output') {
             die("Query is failed".mysqli_error($connection));
