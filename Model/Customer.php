@@ -1,6 +1,8 @@
 <?php
 
-include "Model\database.php";
+require "../Model/database.php";
+
+
 
 class Customer
 {
@@ -12,30 +14,40 @@ class Customer
     private int $variableDiscount;
 
 
-    public function __construct(int $id, string $firstName, string $lastName, int $groupId, int $fixedDiscount, int $variableDiscount)
+
+$query = "SELECT * FROM customer";
+        $output = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($output);
+
+        var_dump($row);
+
+    public function __construct()
     {
+
+        
         global $connection;
         $query = "SELECT * FROM customer";
-        $output = mysqli_connect($connection, $query);
-
-        if('!$output') {
-            die("Query is failed".mysqli_error($connection));
+        $output = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($output);
+    
+        if(!$output) {
+            die("Query is failed " . mysqli_error($connection));
         }
 
-        $this->id = $id;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->groupId = $groupId;
-        $this->fixedDiscount = $fixedDiscount;
-        $this->variableDiscount = $variableDiscount;
-         $this->getId();
+        // $this->id = $id;
+        // $this->firstName = $firstName;
+        // $this->lastName = $lastName;
+        // $this->groupId = $groupId;
+        // $this->fixedDiscount = $fixedDiscount;
+        // $this->variableDiscount = $variableDiscount;
+        
     }
 
     public function getId(){
         global $connection;
-        $this->firstName;
-        $firstName ="SELECT * FROM Customer";
-        return $output = mysqli_query($connection, $firstName);
+        $this->id;
+        $id ="SELECT * FROM Customer";
+        return $output = mysqli_query($connection, $id);
         $name =mysqli_fetch_all($output, MYSQLI_ASSOC);
         return $name;
 
@@ -43,8 +55,12 @@ class Customer
 
     public function getFirstName()
     {
-
-        return $this->firstName;
+        global $connection;
+        $this->id;
+        $id ="SELECT firstname FROM Customer";
+        return $output = mysqli_query($connection, $id);
+        $name =mysqli_fetch_all($output, MYSQLI_ASSOC);
+        return $name;
     }
 
     public function getLastName()

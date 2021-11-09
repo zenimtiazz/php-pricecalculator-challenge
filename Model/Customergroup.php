@@ -14,9 +14,9 @@ class CustomerGroup{
     public function __construct(int $id, string $name, int $parentid, int $fixedDiscount, int $variableDiscount){
         
         global $connection;
-        $query = "SELECT * FROM customer";
+        $query = "SELECT * FROM customer_group";
         $output = mysqli_connect($connection, $query);
-
+    
         if('!$output') {
             die("Query is failed".mysqli_error($connection));
         }

@@ -10,7 +10,7 @@ private int $price;
 
 public function __construct(int $id , string $name , int $price){
     global $connection;
-    $query = "SELECT * FROM customer";
+    $query = "SELECT * FROM product";
     $output = mysqli_connect($connection, $query);
 
     if('!$output') {
