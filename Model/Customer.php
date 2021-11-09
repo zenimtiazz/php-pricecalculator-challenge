@@ -1,6 +1,6 @@
 <?php
 
-require "../Model/database.php";
+require "database.php";
 
 
 
@@ -8,18 +8,15 @@ class Customer
 {
     private int $id;
     private string $firstName;
-    private string $lastName;
+    private string $lastName ="";
     private int $groupId;
     private int $fixedDiscount;
     private int $variableDiscount;
+    private $output;
 
 
 
-$query = "SELECT * FROM customer";
-        $output = mysqli_query($connection, $query);
-        $row = mysqli_fetch_assoc($output);
 
-        var_dump($row);
 
     public function __construct()
     {
@@ -27,10 +24,10 @@ $query = "SELECT * FROM customer";
         
         global $connection;
         $query = "SELECT * FROM customer";
-        $output = mysqli_query($connection, $query);
-        $row = mysqli_fetch_assoc($output);
+        $this->output = mysqli_query($connection, $query);
+        // $row = mysqli_fetch_assoc($output);
     
-        if(!$output) {
+        if(!$this->output) {
             die("Query is failed " . mysqli_error($connection));
         }
 
@@ -45,7 +42,7 @@ $query = "SELECT * FROM customer";
 
     public function getId(){
         global $connection;
-        $this->id;
+        
         $id ="SELECT * FROM Customer";
         return $output = mysqli_query($connection, $id);
         $name =mysqli_fetch_all($output, MYSQLI_ASSOC);
@@ -56,8 +53,8 @@ $query = "SELECT * FROM customer";
     public function getFirstName()
     {
         global $connection;
-        $this->id;
-        $id ="SELECT firstname FROM Customer";
+       
+        $id ="SELECT firstname, lastname FROM Customer";
         return $output = mysqli_query($connection, $id);
         $name =mysqli_fetch_all($output, MYSQLI_ASSOC);
         return $name;

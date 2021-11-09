@@ -7,7 +7,7 @@ declare(strict_types=1);
 require 'Model\Customer.php';
 require 'Model\Customergroup.php';
 require 'Model\Product.php';
-
+require 'View/customerName.php';
 //include all your model files here
 require 'Model/User.php';
 //include all your controllers here
@@ -16,7 +16,7 @@ require 'Controller/InfoController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
-$a = new Customer();
+$customer = new Customer();
 var_dump($a);
 $controller = new HomepageController();
 if(isset($_GET['page']) && $_GET['page'] === 'info') {
