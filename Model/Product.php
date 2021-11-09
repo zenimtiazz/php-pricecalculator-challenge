@@ -38,7 +38,7 @@ public function __construct(){
     $name =mysqli_fetch_all($output1, MYSQLI_ASSOC);
     return $name;
  }
- public function getPrice() : int{
+ public function getPrice(){
     global $connection;
     $id ="SELECT price FROM product";
     return $output1 = mysqli_query($connection, $id);

@@ -18,7 +18,7 @@ require 'Controller/InfoController.php';
 //this file should never be more than 20 lines of code!
 // $customer = new Customer();
 // $product = new Product();
-var_dump($a);
+
 $controller = new HomepageController();
 if(isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new InfoController();

@@ -8,9 +8,9 @@ $customer = new Customer();
 $product = new Product();
 
 $name = $customer->getFirstName();
-
-$productprice = $product->getProductName();
-//$row = mysqli_fetch_assoc($name);
+$productName = $product->getProductName();
+$productPrice = $product->getPrice();
+//$row = mysqli_fetch_assoc($name); 
 
 
 
@@ -43,7 +43,7 @@ $productprice = $product->getProductName();
 <select name="product" id="product">
     <option value="">
         <?php
-        while ($row = mysqli_fetch_assoc($productprice)) {
+        while ($row = mysqli_fetch_assoc($productName)) {
         ?>
     <option value="">
         <?php
@@ -59,7 +59,15 @@ $productprice = $product->getProductName();
 ?>
 
 
+
 </select>
 </option>
+<?php
+        while ($row = mysqli_fetch_assoc($productPrice)) {
+          
+            echo "<br>".$row['price'].  "<br> "; 
+          
+    }
+?>
 
 <?php require 'includes/footer.php' ?>
