@@ -64,8 +64,9 @@ $productPrice = $product->getPrice();
 </option>
 <?php
         while ($row = mysqli_fetch_assoc($productPrice)) {
-          
-            echo "<br>".$row['price'].  "<br> "; 
+            $prices = (int)$row['price'];
+            $priceInPennie = $prices/100;
+            echo "<br>".$priceInPennie.  "<br> "; 
           
     }
 ?>
