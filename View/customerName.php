@@ -1,14 +1,18 @@
 <?php
 
-
+declare(strict_types=1);
 require "../Model/Customer.php";
+require "../Model/Product.php";
 
 $customer = new Customer();
-$name= $customer->getFirstName();
-$lName= $customer->getLastName();
+$product = new Product();
+
+$name = $customer->getFirstName();
+
+$productprice = $product->getProductName();
 //$row = mysqli_fetch_assoc($name);
 
-require "../Model/database.php";
+
 
 
 
@@ -22,11 +26,32 @@ require "../Model/database.php";
         ?>
     <option value="">
         <?php
-            echo $row['firstname'].  " " . $row['lastname'];
+            echo $row['firstname'] .  " " . $row['lastname'];
             // var_dump($row);
         ?>
     </option>
-    <!-- .  " " . $row['lastname' -->
+    
+
+
+<?php
+        }
+?>
+
+
+</select>
+<label for="customer">Choose the Productname </label>
+<select name="product" id="product">
+    <option value="">
+        <?php
+        while ($row = mysqli_fetch_assoc($productprice)) {
+        ?>
+    <option value="">
+        <?php
+            echo $row['name'];
+            //  var_dump($row);
+        ?>
+    </option>
+  
 
 
 <?php
@@ -36,3 +61,5 @@ require "../Model/database.php";
 
 </select>
 </option>
+
+<?php require 'includes/footer.php' ?>

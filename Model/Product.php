@@ -1,34 +1,49 @@
 <?php
 
-include "Model\database.php";
+require "database.php";
+
 
 
 class Product{
 private int $id;
-private string $name;
+private string $productName;
 private int $price;
+private $output1;
 
-public function __construct(int $id , string $name , int $price){
+public function __construct(){
     global $connection;
     $query = "SELECT * FROM product";
-    $output = mysqli_connect($connection, $query);
+    $this->output1 = mysqli_query($connection, $query);
+    
 
-    if('!$output') {
-        die("Query is failed".mysqli_error($connection));
+    if(!$this->output1) {
+        die("Query is failed " . mysqli_error($connection));
     }
 
-     $this->id = $id;
-     $this->name = $name;
-     $this->price = $price;
+
  }
  public function getId() : int{
-     return $this->id;
+    global $connection;
+       
+    $id ="SELECT id FROM product";
+    return $output1 = mysqli_query($connection, $id);
+    $name =mysqli_fetch_all($output1, MYSQLI_ASSOC);
+    return $id;
  }
- public function getName() : string{
-     return $this->name;
+ public function getProductName(){
+    global $connection;
+       
+    $id ="SELECT name FROM product";
+    return $output1 = mysqli_query($connection, $id);
+    $name =mysqli_fetch_all($output1, MYSQLI_ASSOC);
+    return $name;
  }
  public function getPrice() : int{
-     return $this->price;
+    global $connection;
+    $id ="SELECT price FROM product";
+    return $output1 = mysqli_query($connection, $id);
+    $name =mysqli_fetch_all($output1, MYSQLI_ASSOC);
+    return $name;
  }
 
 

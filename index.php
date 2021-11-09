@@ -16,7 +16,8 @@ require 'Controller/InfoController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
-$customer = new Customer();
+// $customer = new Customer();
+// $product = new Product();
 var_dump($a);
 $controller = new HomepageController();
 if(isset($_GET['page']) && $_GET['page'] === 'info') {
